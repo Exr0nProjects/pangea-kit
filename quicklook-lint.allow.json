@@ -1,0 +1,32 @@
+{
+ "version": 1,
+ "rules": {
+  "durable-write-outside-outbox": {
+   "lib/live.js": 1,
+   "lib/stream-worker.js": 1,
+   "harness/check-live.mjs": 1
+  },
+  "fetch-without-deadline": {
+   "host/boot.js": 3,
+   "lib/data.js": 1,
+   "lib/live.js": 1,
+   "lib/bootgate.mjs": 1,
+   "harness/check-live.mjs": 3
+  },
+  "interval-without-owner": {
+   "lib/cloud.js": 1,
+   "lib/local-viewer.mjs": 1
+  },
+  "unbounded-queue": {
+   "host/boot.js": 1,
+   "lib/engine/lane.js": 1
+  },
+  "focus-outside-intent": {
+   "lib/editor/browser-check.mjs": 3,
+   "lib/editor/editor.js": 4,
+   "lib/editor/embed.js": 4,
+   "lib/inline-title.js": 1
+  }
+ },
+ "off": {}
+}

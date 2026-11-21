@@ -1,0 +1,8 @@
+{
+  "worker_base": "https://worker.example.invalid",
+  "issuer_base": "https://issuer.example.invalid",
+  "token_path": "/api/pangea/token",
+  "revoke_path": "/api/pangea/revoke",
+  "token_ttl_seconds": 3600,
+  "scopes": ["streams:read", "streams:write"]
+}

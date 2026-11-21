@@ -225,4 +225,14 @@ Cold test of 2026-11-21 (osc-probe): 0 extra docs opened, 2 gaps found and fixed
 
 ## 9. Where this file lives
 
-This repository holds the skill, the verification harness (`harness/`), prompts (`prompts/`), small example applets (`examples/`) and generic lessons (`lessons/`). The kit runtime that the templates import (`pangea-kit/ui`, the host, the state core) is not in this repository; `$KIT` is wherever you keep it. Edit this file, keep rows one line each, and when a rule recurs with `none` in the "checked by" column add a harness check and change the column.
+This repository is the kit: the runtime (`lib/`, `host/`, `ui/`, `bin/`, `lint/`, `conformance/`, `tests/`, `GUIDE.md` for the API reference), this skill, the verification harness (`harness/`), prompts (`prompts/`), small example applets (`examples/`, plus `apps/` used by tests) and generic lessons (`lessons/`). `$KIT` is the root of this checkout.
+
+Try it from a fresh clone (Node 22+, Chrome for the boot gate):
+
+```
+npm ci && npm test
+node bin/pangea-kit.mjs publish examples/damped-oscillator --local   # prints http://127.0.0.1:4180/view/<ULID>/
+node harness/check-live.mjs <that-url> --cdp http://localhost:9222
+```
+
+`--local` (also the default when no hosted publisher is configured) writes the page under `./.pangea-kit/pages/<ULID>/` and starts `lib/local-viewer.mjs`, a dependency-free loopback server with the same sandbox CSP as a hosted viewer and a live channel, so `publish --into <ULID>` hot-swaps an open page. Set `PANGEA_KIT_LOCAL_ROOT` and `PANGEA_KIT_LOCAL_PORT` to move it. A hosted viewer is any server that serves `<store>/<ULID>/` at `/view/<ULID>/` with the artifact CSP and the `__live` and `__view` endpoints (see `lib/local-viewer.mjs`); point `PANGEA_KIT_PUBLISHER` at a script that stores a stage directory and prints its URL. Edit this file, keep rows one line each, and when a rule recurs with `none` in the "checked by" column add a harness check and change the column.

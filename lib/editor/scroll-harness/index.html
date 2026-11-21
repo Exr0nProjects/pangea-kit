@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><title>kit scroll harness</title>
+<style>
+  html, body { margin: 0; }
+  #scroller { height: 600px; width: 640px; overflow-y: auto; position: relative; }
+  #doc { font: 15px/1.5 -apple-system, system-ui, sans-serif; white-space: pre-wrap; outline: none; padding: 0; }
+  .ln { padding: 2px 8px; }
+  .qk-spacer { user-select: none; }
+  /* a layout change no kit commit makes (a web font or decoration settling): body.late grows every third row */
+  body.late .ln.g { padding-bottom: 23px; }
+</style>
+</head>
+<body>
+<div id="scroller"><div id="doc" contenteditable="true" spellcheck="false"></div></div>
+<script type="module" src="./harness.js"></script>
+</body>
+</html>

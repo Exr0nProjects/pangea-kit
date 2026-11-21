@@ -1,0 +1,1 @@
+{"attempts":["A:1","A:2","C:1","A:3","C:2","B:1"],"left":[],"refusedForGood":{"200":false,"400":true,"401":false,"404":true,"408":false,"409":false,"429":false,"500":false,"503":false},"script":{"A:1":"throw","A:2":503,"A:3":200,"B:1":400,"C:1":429,"C:2":200},"stats":{"attempts":6,"pending":0,"refused":1,"retried":3,"sent":2}}

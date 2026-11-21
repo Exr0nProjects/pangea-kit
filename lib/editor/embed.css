@@ -1,0 +1,17 @@
+/* The embed slot's chrome (lib/editor/embed.js embedSlot): the title row with the fold caret just INSIDE the box's left edge, the title, and the
+   tools at the right end. The app owns the box and its colours (--line, --ink, --ink-faint, --mono); the chrome's behaviour is the kit's, so every
+   app gets the same rules:
+   - the caret, the tools and the full-strength title show only while the POINTER is over the title row, or a control in it is pressed or
+     keyboard-focused. Never because the text caret or focus is inside the embedded document (The owner 2026-11-12 18:53 PST: "my cursor being in the
+     transclusion does not count as highlight ... it should not activate the buttons/title hover just bc im in the transclusion"): there is no
+     :focus-within in this file, and tests assert none reaches the page (zai3 test/embed-chrome.browser.test.js);
+   - the chrome is steady across a mode change: the slot is patched in place, so nothing here depends on a node being new (no animation on mount). */
+.qk-embed-head { position: relative; }
+.qk-embed-name { opacity: .5; transition: opacity .12s; }
+.qk-embed-btns { opacity: 0; transition: opacity .12s; }
+.qk-embed-head .qk-embed-collapse { position: absolute; left: 2px; top: 1px; width: 18px; opacity: 0; transition: opacity .12s; }
+.qk-embed-head:hover .qk-embed-name, .qk-embed-head:has(.qk-embed-btn:focus-visible) .qk-embed-name, .qk-embed-head:has(.qk-embed-btn:active) .qk-embed-name { opacity: 1; }
+.qk-embed-head:hover .qk-embed-btns, .qk-embed-head:has(.qk-embed-btn:focus-visible) .qk-embed-btns, .qk-embed-head:has(.qk-embed-btn:active) .qk-embed-btns { opacity: 1; }
+.qk-embed-head:hover .qk-embed-collapse, .qk-embed-head:has(.qk-embed-btn:focus-visible) .qk-embed-collapse, .qk-embed-head:has(.qk-embed-btn:active) .qk-embed-collapse { opacity: .7; }
+.qk-embed-collapse:hover { opacity: 1 !important; }
+@media (hover: none) { .qk-embed-btns { opacity: .7; } .qk-embed-collapse { opacity: .6 !important; } }
